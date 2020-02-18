@@ -1,0 +1,17 @@
+ 
+
+function FindProxyForURL(url, host)
+{
+    url  = url.toLowerCase();
+    host = host.toLowerCase();
+
+    if (dnsDomainIs(host,"gmcc.net") || 
+	    dnsDomainIs(host,"cs.cmos") ||
+	    dnsDomainIs(host,"gd.chinamobile.com") ||
+	    isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") ||
+	    isInNet(host, "10.0.0.0", "255.0.0.0")
+	    ) {
+      return "DIRECT";
+    }
+return "PROXY cmproxy.gmcc.net:8081";
+}
